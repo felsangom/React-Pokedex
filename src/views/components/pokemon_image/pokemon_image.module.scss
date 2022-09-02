@@ -1,0 +1,16 @@
+.pokemonCard {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cardContent {
+  padding: 0 !important;
+  &:last-child {
+    padding-bottom: 0 !important;
+  }
+}
+
+.pokemonImage {
+  width: 230px;
+  height: auto;
+}
