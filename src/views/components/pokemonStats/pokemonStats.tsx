@@ -1,7 +1,7 @@
 import React from "react"
 import { TableContainer, Typography, Paper, Table, TableBody, TableRow, TableCell } from '@mui/material'
-import { pokemonDataType } from "../../data_types/data_types"
-import PokemonTypeIcon from "../pokemon_type_icon/pokemon_type_icon"
+import { pokemonDataType } from "../../dataTypes/dataTypes"
+import PokemonTypeIcon from "../pokemonTypeIcon/pokemonTypeIcon"
 
 
 type pokemonStatsProps = {
@@ -23,23 +23,23 @@ const PokemonStats = (props: pokemonStatsProps) => {
       <TableBody>
         <TableRow key="types-base-experience">
           <TableCell sx={{ width: '25%' }} align="right">
-            <Typography>Type:</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>Type:</Typography>
           </TableCell>
           <TableCell sx={{ width: '25%' }}>{renderPokemonTypes()}</TableCell>
           <TableCell sx={{ width: '25%' }} align="right">
-            <Typography>Base experience:</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>Base experience:</Typography>
           </TableCell>
           <TableCell sx={{ width: '25%' }}>{pokemonData.base_experience}</TableCell>
         </TableRow>
         <TableRow key="height-weight">
           <TableCell sx={{ width: '25%' }} align="right">
-            <Typography>Height:</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>Height:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>{pokemonData.height}</TableCell>
+          <TableCell sx={{ width: '25%' }}>{pokemonData.height / 10}</TableCell>
           <TableCell sx={{ width: '25%' }} align="right">
-            <Typography>Weight:</Typography>
+            <Typography sx={{ fontWeight: 'bold' }}>Weight:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>{pokemonData.weight}</TableCell>
+          <TableCell sx={{ width: '25%' }}>{pokemonData.weight / 10}</TableCell>
         </TableRow>
       </TableBody>
     </Table>

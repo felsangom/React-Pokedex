@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@mui/material"
-import style from './pokemon_image.module.scss'
+import style from './pokemonImage.module.scss'
 
 type pokemonImageProps = {
   src: string

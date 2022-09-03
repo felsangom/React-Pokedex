@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material"
 import React from "react"
+import { Box, Typography } from "@mui/material"
 import bug from '../../../assets/images/pokemon_type_icons/bug.svg'
 import dark from '../../../assets/images/pokemon_type_icons/dark.svg'
 import dragon from '../../../assets/images/pokemon_type_icons/dragon.svg'
@@ -18,7 +18,7 @@ import psychic from '../../../assets/images/pokemon_type_icons/psychic.svg'
 import rock from '../../../assets/images/pokemon_type_icons/rock.svg'
 import steel from '../../../assets/images/pokemon_type_icons/steel.svg'
 import water from '../../../assets/images/pokemon_type_icons/water.svg'
-import style from './pokemon_type_icon.module.scss'
+import style from './pokemonTypeIcon.module.scss'
 
 type pokemonTypeIconProps = {
   type: string

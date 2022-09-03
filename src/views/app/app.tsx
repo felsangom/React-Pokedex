@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/images/logo.png'
 import style from './app.module.scss'
-import SearchBar from '../components/search_bar/search_bar'
+import SearchBar from '../components/searchBar/searchBar'
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
-import PokemonImage from '../components/pokemon_image/pokemon_image'
-import PokemonStats from '../components/pokemon_stats/pokemon_stats'
-import { pokemonDataType, pokemonSpeciesType } from '../data_types/data_types'
+import PokemonImage from '../components/pokemonImage/pokemonImage'
+import PokemonStats from '../components/pokemonStats/pokemonStats'
+import { pokemonDataType, pokemonSpeciesType } from '../dataTypes/dataTypes'
 
 const App = () => {
   const [pokemonDescription, setPokemonDescription] = useState("")
