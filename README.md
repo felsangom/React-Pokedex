@@ -1,3 +1,7 @@
+# Warning!
+
+This is a work in progress.
+
 # React Pokédex
 
 A Pokédex implementation in React and Typescript:

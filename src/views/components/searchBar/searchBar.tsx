@@ -1,5 +1,5 @@
 import React, { KeyboardEvent, useState } from 'react'
-import { Box, FormControl, IconButton, Input, InputAdornment, InputLabel } from '@mui/material'
+import { FormControl, IconButton, Input, InputAdornment, InputLabel } from '@mui/material'
 import { Refresh, Search } from '@mui/icons-material'
 import style from './searchBar.module.scss'
 
