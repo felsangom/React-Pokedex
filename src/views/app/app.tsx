@@ -47,17 +47,19 @@ const App = () => {
       <header className={style.appHeader}>
         <img src={logo} className={style.appLogo} alt="logo" />
         <Container maxWidth="md">
-          <Card sx={{ height: '80vh' }}>
+          <Card>
             <CardContent>
               <Grid container alignItems="center" justifyContent="center">
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6} md={4}>
                   <SearchBar updateDataAction={setPokemonData} />
                 </Grid>
-                <Grid item xs={4}>
+              </Grid>
+              <Grid container alignItems="center" justifyContent="center">
+                <Grid item xs={12} sm={6} md={4}>
                   <PokemonImage src={pokemonData.sprites.other['official-artwork']['front_default']} />
                 </Grid>
                 { pokemonData.name &&
-                  <Grid item xs={4}>
+                  <Grid item xs={12} sm={6} md={4}>
                     <Typography variant="h4" className={style.pokemonName}>{pokemonData.name}</Typography>
                     <Typography variant="subtitle1" component="pre">{pokemonDescription.replace("\u000c", ' ')}</Typography>
                   </Grid>

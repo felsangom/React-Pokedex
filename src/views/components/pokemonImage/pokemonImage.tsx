@@ -8,7 +8,7 @@ type pokemonImageProps = {
 
 const PokemonImage = (props: pokemonImageProps) => {
   return (
-    <Card className={style.pokemonCard} sx={{ maxWidth: 250 }}>
+    <Card className={style.pokemonCard}>
       <CardContent className={style.cardContent}>
         <img alt="official pokémon artwork" src={props.src} className={style.pokemonImage} />
       </CardContent>
