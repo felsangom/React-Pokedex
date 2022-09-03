@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/images/logo.png'
 import style from './app.module.scss'
 import SearchBar from '../components/search_bar/search_bar'
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import PokemonImage from '../components/pokemon_image/pokemon_image'
 import PokemonStats from '../components/pokemon_stats/pokemon_stats'
-import { pokemonDataType } from '../data_types/data_types'
+import { pokemonDataType, pokemonSpeciesType } from '../data_types/data_types'
 
 const App = () => {
+  const [pokemonDescription, setPokemonDescription] = useState("")
   const [pokemonData, setPokemonData] = useState<pokemonDataType>({
     name: "",
     base_experience: 0,
@@ -21,8 +22,25 @@ const App = () => {
       }
     },
     types: [],
-    stats: []
+    stats: [],
+    species: {
+      url: ""
+    }
   })
+
+  useEffect(() => {
+    if (pokemonData.species.url) {
+      fetch(pokemonData.species.url).then(response => {
+        let pokemonSpecies = response.json() as unknown as pokemonSpeciesType
+        return pokemonSpecies
+      }).then(speciesData => {
+        let englishFlavorText = speciesData.flavor_text_entries.filter(entry => entry.language.name === 'en')[0].flavor_text
+        setPokemonDescription(englishFlavorText)
+      }).catch(_ => {
+        setPokemonDescription("")
+      })
+    }
+  }, [ pokemonData ])
 
   return (
     <div className={style.app}>
@@ -38,9 +56,12 @@ const App = () => {
                 <Grid item xs={4}>
                   <PokemonImage src={pokemonData.sprites.other['official-artwork']['front_default']} />
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="h4" className={style.pokemonName}>{pokemonData.name}</Typography>
-                </Grid>
+                { pokemonData.name &&
+                  <Grid item xs={4}>
+                    <Typography variant="h4" className={style.pokemonName}>{pokemonData.name}</Typography>
+                    <Typography variant="subtitle1" component="pre">{pokemonDescription.replace("\u000c", ' ')}</Typography>
+                  </Grid>
+                }
                 <Grid item xs={12} visibility={pokemonData.name ? 'visible' : 'hidden'}>
                   <PokemonStats pokemonData={pokemonData} />
                 </Grid>

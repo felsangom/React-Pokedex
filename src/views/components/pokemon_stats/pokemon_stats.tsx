@@ -1,6 +1,8 @@
 import React from "react"
 import { TableContainer, Typography, Paper, Table, TableBody, TableRow, TableCell } from '@mui/material'
 import { pokemonDataType } from "../../data_types/data_types"
+import PokemonTypeIcon from "../pokemon_type_icon/pokemon_type_icon"
+
 
 type pokemonStatsProps = {
   pokemonData: pokemonDataType
@@ -8,6 +10,12 @@ type pokemonStatsProps = {
 
 const PokemonStats = (props: pokemonStatsProps) => {
   const { pokemonData } = props
+
+  const renderPokemonTypes = (): JSX.Element[] => {
+    return pokemonData.types.map(type => {
+      return <PokemonTypeIcon key={type.type.name} type={type.type.name} />
+    })
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -17,7 +25,7 @@ const PokemonStats = (props: pokemonStatsProps) => {
           <TableCell sx={{ width: '25%' }} align="right">
             <Typography>Type:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>{pokemonData.types.map(type => type.type.name).join(', ')}</TableCell>
+          <TableCell sx={{ width: '25%' }}>{renderPokemonTypes()}</TableCell>
           <TableCell sx={{ width: '25%' }} align="right">
             <Typography>Base experience:</Typography>
           </TableCell>

@@ -21,7 +21,30 @@ type pokemonDataType = {
     stat: {
       name: string
     }
+  }[],
+  species: {
+    url: ""
+  }
+}
+
+type pokemonSpeciesType = {
+  base_happiness: number,
+  capture_rate: number,
+  color: {
+    name: string
+  },
+  evolution_chain: {
+    url: string
+  },
+  flavor_text_entries: {
+    flavor_text: string,
+    language: {
+      name: string
+    },
+    version: {
+      name: string
+    }
   }[]
 }
 
-export { pokemonDataType }
+export { pokemonDataType, pokemonSpeciesType }
