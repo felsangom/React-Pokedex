@@ -1,16 +1,11 @@
-.iconContainer {
-  display: inline-block;
-  margin-left: 10px;
-}
-
 .icon {
   display: flex;
   height: 25px;
-  width: auto;
+  width: 85px;
   transition: 200ms all;
   align-items: center;
   justify-content: center;
-  max-width: 50%;
+  margin-bottom: 2px;
 }
 
 .icon:hover{
@@ -29,6 +24,7 @@
 .icon .typeDescription {
   flex: 4;
   padding-left: 5px;
+  padding-right: 5px;
   line-height: 25px;
   display: inline-block !important;
 }

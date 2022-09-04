@@ -1,4 +1,4 @@
-type pokemonDataType = {
+type pokemonData = {
   name: string,
   base_experience: number,
   height: number,
@@ -13,7 +13,8 @@ type pokemonDataType = {
   types: {
     slot: number,
     type: {
-      name: string
+      name: string,
+      url: string
     }
   }[],
   stats: {
@@ -27,7 +28,7 @@ type pokemonDataType = {
   }
 }
 
-type pokemonSpeciesType = {
+type pokemonSpecies = {
   base_happiness: number,
   capture_rate: number,
   color: {
@@ -47,4 +48,31 @@ type pokemonSpeciesType = {
   }[]
 }
 
-export { pokemonDataType, pokemonSpeciesType }
+type pokemonType = {
+  damage_relations: {
+    double_damage_from: {
+      name: string
+    }[],
+    double_damage_to: {
+      name: string
+    }[],
+    half_damage_from: {
+      name: string
+    }[],
+    half_damage_to: {
+      name: string
+    }[],
+    no_damage_from: {
+      name: string
+    }[],
+    no_damage_to: {
+      name: string
+    }[]
+  }
+}
+
+export {
+  pokemonData,
+  pokemonSpecies,
+  pokemonType
+}

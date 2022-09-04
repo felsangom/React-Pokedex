@@ -8,6 +8,8 @@ A Pokédex implementation in React and Typescript:
 * Consume Pokémon data from [PokéAPI](https://pokeapi.co/)
 * Display information on the user interface using [Material UI](https://mui.com)
 
+![Pokédex Sample](sample.png)
+
 # Requirements
 
 Project created using:

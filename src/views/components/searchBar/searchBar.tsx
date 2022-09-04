@@ -1,4 +1,4 @@
-import React, { KeyboardEvent, useState } from 'react'
+import { KeyboardEvent, useState } from 'react'
 import { FormControl, IconButton, Input, InputAdornment, InputLabel } from '@mui/material'
 import { Refresh, Search } from '@mui/icons-material'
 import style from './searchBar.module.scss'
@@ -11,7 +11,7 @@ const SearchBar = (props: searchBarProps): JSX.Element => {
   const [ searchString, setSearchString ] = useState('')
   const [ searching, setSearching ]  = useState(false)
 
-  const handleEnterPress = (event: KeyboardEvent) => {
+  const handleEnterPress = (event: KeyboardEvent): void => {
     if (event.key === 'Enter') {
       event.preventDefault()
       handleSearch()
@@ -36,7 +36,7 @@ const SearchBar = (props: searchBarProps): JSX.Element => {
 
   const renderSearchButton = (): JSX.Element => {
     return (
-      <IconButton aria-label='search pokémon'  onClick={(event) => handleSearch()}>
+      <IconButton aria-label='search pokémon'  onClick={_ => handleSearch()}>
         <Search />
       </IconButton>
     )

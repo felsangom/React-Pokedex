@@ -1,4 +1,3 @@
-import React from "react"
 import { Box, Typography } from "@mui/material"
 import bug from '../../../assets/images/pokemon_type_icons/bug.svg'
 import dark from '../../../assets/images/pokemon_type_icons/dark.svg'
@@ -45,13 +44,11 @@ const pokemonTypes = {
   water
 }
 
-const PokemonTypeIcon = (props: pokemonTypeIconProps) => {
+const PokemonTypeIcon = (props: pokemonTypeIconProps): JSX.Element => {
   return (
-    <Box className={style.iconContainer}>
-      <Box className={style.icon}>
-        <img className={style[props.type]} alt={props.type} src={pokemonTypes[props.type as keyof typeof pokemonTypes]} />
-        <Typography className={style.typeDescription} variant="caption">{props.type}</Typography>
-      </Box>
+    <Box className={style.icon}>
+      <img className={style[props.type as keyof typeof style]} alt={props.type} src={pokemonTypes[props.type as keyof typeof pokemonTypes]} />
+      <Typography className={style.typeDescription} variant="caption">{props.type}</Typography>
     </Box>
   )
 }
