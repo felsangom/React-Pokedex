@@ -18,6 +18,11 @@
   color: white;
 }
 
+.pokemonDescription {
+  word-wrap: break-word;
+  padding: 5px;
+}
+
 .pokemonName {
   text-transform: capitalize;
 }

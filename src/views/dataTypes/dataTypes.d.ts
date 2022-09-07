@@ -17,12 +17,7 @@ type pokemonData = {
       url: string
     }
   }[],
-  stats: {
-    base_stat: number,
-    stat: {
-      name: string
-    }
-  }[],
+  stats: pokemonStats[],
   species: {
     url: ""
   }
@@ -71,8 +66,16 @@ type pokemonType = {
   }
 }
 
+type pokemonStats = {
+  base_stat: number,
+  stat: {
+    name: string
+  }
+}
+
 export {
   pokemonData,
   pokemonSpecies,
-  pokemonType
+  pokemonType,
+  pokemonStats
 }

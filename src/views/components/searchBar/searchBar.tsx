@@ -10,6 +10,7 @@ type searchBarProps = {
 const SearchBar = (props: searchBarProps): JSX.Element => {
   const [ searchString, setSearchString ] = useState('')
   const [ searching, setSearching ]  = useState(false)
+  const [ hasError, setHasError ] = useState(false)
 
   const handleEnterPress = (event: KeyboardEvent): void => {
     if (event.key === 'Enter') {
@@ -22,6 +23,7 @@ const SearchBar = (props: searchBarProps): JSX.Element => {
     if (searching) return
 
     setSearching(true)
+    setHasError(false)
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${searchString.toLocaleLowerCase()}`).then(response => {
       return response.json()
@@ -30,6 +32,7 @@ const SearchBar = (props: searchBarProps): JSX.Element => {
       setSearching(false)
     }).catch(error => {
       setSearching(false)
+      setHasError(true)
       console.log(error)
     })
   }
@@ -54,10 +57,12 @@ const SearchBar = (props: searchBarProps): JSX.Element => {
     <FormControl variant="standard" sx={{ width: '100%' }}>
       <InputLabel htmlFor='search-field' variant='standard'>Search for a Pokémon by name or number...</InputLabel>
       <Input
+        autoFocus
         id='search-field'
         type='text'
         role='search'
         value={searchString}
+        error={hasError}
         onChange={(event) => setSearchString(event.target.value)}
         onKeyDown={(event) => handleEnterPress(event)}
         endAdornment={

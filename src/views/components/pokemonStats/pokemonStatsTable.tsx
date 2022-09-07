@@ -3,14 +3,14 @@ import { TableContainer, Typography, Paper, Table, TableBody, TableRow, TableCel
 import { pokemonData, pokemonSpecies, pokemonType } from "../../dataTypes/dataTypes"
 import PokemonTypeIcon from "../pokemonTypeIcon/pokemonTypeIcon"
 import { Box } from '@mui/system'
-import style from './pokemonStats.module.scss'
+import style from './pokemonStatsTable.module.scss'
 
 type pokemonStatsProps = {
   pokemonData: pokemonData,
   pokemonSpecies: pokemonSpecies
 }
 
-const PokemonStats = (props: pokemonStatsProps): JSX.Element => {
+const PokemonStatsTable = (props: pokemonStatsProps): JSX.Element => {
   const { pokemonData, pokemonSpecies } = props
   const [ pokemonTypes, setPokemonTypes ] = useState(new Array<pokemonType>())
 
@@ -100,7 +100,7 @@ const PokemonStats = (props: pokemonStatsProps): JSX.Element => {
 
   return (
     <TableContainer component={Paper}>
-    <Table>
+    <Table size="small">
       <TableBody>
         <TableRow key="types-base-experience">
           <TableCell sx={{ width: '25%' }} align="right">
@@ -134,17 +134,19 @@ const PokemonStats = (props: pokemonStatsProps): JSX.Element => {
           </TableCell>
           <TableCell sx={{ width: '25%' }}>{pokemonSpecies.capture_rate}%</TableCell>
         </TableRow>
-        <TableRow key="weaknesses">
+        <TableRow key="weak-against">
           <TableCell sx={{ width: '25%' }} align="right">
             <Typography sx={{ fontWeight: 'bold' }}>Weak against:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>
+          <TableCell colSpan={3}>
             <Box className={style.pokemonTypesContainer}>{renderWeakAgainst()}</Box>
           </TableCell>
+        </TableRow>
+        <TableRow key="half-damage-to">
           <TableCell sx={{ width: '25%' }} align="right">
             <Typography sx={{ fontWeight: 'bold' }}>Half damage to:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>
+          <TableCell colSpan={3}>
             <Box className={style.pokemonTypesContainer}>{renderHalfDamageTo()}</Box>
           </TableCell>
         </TableRow>
@@ -152,13 +154,15 @@ const PokemonStats = (props: pokemonStatsProps): JSX.Element => {
           <TableCell sx={{ width: '25%' }} align="right">
             <Typography sx={{ fontWeight: 'bold' }}>Strong against:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>
+          <TableCell colSpan={3}>
             <Box className={style.pokemonTypesContainer}>{renderStrongAgainst()}</Box>
           </TableCell>
+        </TableRow>
+        <TableRow key="half-damage-from">
           <TableCell sx={{ width: '25%' }} align="right">
             <Typography sx={{ fontWeight: 'bold' }}>Half damage from:</Typography>
           </TableCell>
-          <TableCell sx={{ width: '25%' }}>
+          <TableCell colSpan={3}>
             <Box className={style.pokemonTypesContainer}>{renderHalfDamageFrom()}</Box>
           </TableCell>
         </TableRow>
@@ -168,4 +172,4 @@ const PokemonStats = (props: pokemonStatsProps): JSX.Element => {
   )
 }
 
-export default PokemonStats
+export default PokemonStatsTable

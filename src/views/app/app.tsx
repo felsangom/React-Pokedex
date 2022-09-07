@@ -4,7 +4,8 @@ import style from './app.module.scss'
 import SearchBar from '../components/searchBar/searchBar'
 import { Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import PokemonImage from '../components/pokemonImage/pokemonImage'
-import PokemonStats from '../components/pokemonStats/pokemonStats'
+import PokemonStatsTable from '../components/pokemonStats/pokemonStatsTable'
+import PokemonStatsChart from '../components/pokemonStatsChart/pokemonStatsChart'
 import { pokemonData, pokemonSpecies } from '../dataTypes/dataTypes'
 
 const App = (): JSX.Element => {
@@ -76,17 +77,24 @@ const App = (): JSX.Element => {
                 </Grid>
               </Grid>
               <Grid container alignItems="center" justifyContent="center">
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={4} md={4}>
                   <PokemonImage src={pokemonData.sprites.other['official-artwork']['front_default']} />
                 </Grid>
-                { pokemonData.name &&
-                  <Grid item xs={12} sm={6} md={4}>
+                {
+                  pokemonData.name &&
+                  <Grid item xs={12} sm={4} md={4} className={style.pokemonDescription}>
                     <Typography variant="h4" className={style.pokemonName}>{pokemonData.name}</Typography>
-                    <Typography variant="subtitle1" component="pre">{pokemonDescription.replace("\u000c", ' ')}</Typography>
+                    <Typography variant="subtitle1">{pokemonDescription.replace("\u000c", ' ')}</Typography>
+                  </Grid>
+                }
+                {
+                  pokemonData.name &&
+                  <Grid item xs={12} sm={4} md={4}>
+                    <PokemonStatsChart pokemonStats={pokemonData.stats} />
                   </Grid>
                 }
                 <Grid item xs={12} visibility={pokemonData.name ? 'visible' : 'hidden'}>
-                  <PokemonStats pokemonData={pokemonData} pokemonSpecies={pokemonSpecies} />
+                  <PokemonStatsTable pokemonData={pokemonData} pokemonSpecies={pokemonSpecies} />
                 </Grid>
               </Grid>
             </CardContent>
